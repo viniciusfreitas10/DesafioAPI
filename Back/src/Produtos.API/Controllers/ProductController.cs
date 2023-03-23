@@ -9,7 +9,6 @@ using Produtos.Domain;
 using Produtos.Persistence.Context;
 using Produtos.Application.Contratos;
 using Microsoft.AspNetCore.Http;
-using ProEvento.API.Models;
 
 namespace Produtos.API.Controllers
 {
@@ -105,11 +104,11 @@ namespace Produtos.API.Controllers
         {
             try
             {
-                logger.Log("GetProductById", $"Recuperando eventos com o id: {id}", "Info");
+                logger.Log("GetProductById", $"Recuperando o produto com o id: {id}", "Info");
 
                 var product = await _productService.GetProductById(id);
 
-                if (product == null) return NotFound("Nenhum evento encontrado com esse Id");
+                if (product == null) return NotFound("Nenhum produto encontrado com esse Id");
 
                 return Ok(product);
             }

@@ -34,7 +34,7 @@ namespace Produtos.API.Controllers
         }
         public string CreatFileTxt(string type)
         {
-            _file = @"C:\Users\vfreitas\source\repos\ProdutosS\Back\src\Produtos.API\Log\" + $"log_{type}_" + DateTime.Now.ToString("yyyyMMdd") + ".txt";
+            _file = @"C:\Users\vfreitas\Desktop\Pessoal\Dev\dev\Desenvolvimento Web\Desafio API\API\DesafioAPI\Back\src\Produtos.API\Log\" + $"log_{type}_" + DateTime.Now.ToString("yyyyMMdd") + ".txt";
             
             return _file;
         }

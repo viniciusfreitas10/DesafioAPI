@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using Produtos.Persistence.Contratos;
 using Produtos.Persistence.Context;
 
-namespace ProEventos.Persistence
+namespace Produtos.Persistence
 {
     public class GeralPersist : IGeralPersist
     {

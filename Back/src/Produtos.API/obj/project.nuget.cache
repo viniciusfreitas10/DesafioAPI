@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "sTEy68AASHCzDlgbgq6XqR6frthPCESiL1KZLM2pW7W/oU2OpfBvunuUEcAmxIyrBDagJQ6FQBNRZAQMZHvxZQ==",
-  "success": false,
-  "projectFilePath": "C:\\Users\\vfreitas\\Desktop\\Pessoal\\Dev\\dev\\Desenvolvimento Web\\Desafio API\\API\\DesafioAPI\\Back\\src\\ProEvento.API\\Produtos.API.csproj",
+  "dgSpecHash": "FhYY066nMbOZQt/JBfeZaX5t4CfKvCKR4F2OvFKgriv6g8SoByvnRA7ZwqAITp+mvFlj4WHSeeNQ0byvIamlFQ==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\vfreitas\\Desktop\\Pessoal\\Dev\\dev\\Desenvolvimento Web\\Desafio API\\API\\DesafioAPI\\Back\\src\\Produtos.API\\Produtos.API.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\vfreitas\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\vfreitas\\.nuget\\packages\\microsoft.aspnetcore.jsonpatch\\5.0.3\\microsoft.aspnetcore.jsonpatch.5.0.3.nupkg.sha512",
@@ -45,15 +45,5 @@
     "C:\\Users\\vfreitas\\.nuget\\packages\\system.diagnostics.diagnosticsource\\5.0.1\\system.diagnostics.diagnosticsource.5.0.1.nupkg.sha512",
     "C:\\Users\\vfreitas\\.nuget\\packages\\system.memory\\4.5.3\\system.memory.4.5.3.nupkg.sha512"
   ],
-  "logs": [
-    {
-      "code": "NU1104",
-      "level": "Error",
-      "message": "Unable to find project 'C:\\Users\\vfreitas\\Desktop\\Pessoal\\Dev\\dev\\Desenvolvimento Web\\Desafio API\\API\\DesafioAPI\\Back\\src\\Produtoss.Application\\Produtos.Application.csproj'. Check that the project reference is valid and that the project file exists.",
-      "libraryId": "C:\\Users\\vfreitas\\Desktop\\Pessoal\\Dev\\dev\\Desenvolvimento Web\\Desafio API\\API\\DesafioAPI\\Back\\src\\Produtoss.Application\\Produtos.Application.csproj",
-      "targetGraphs": [
-        "net5.0"
-      ]
-    }
-  ]
+  "logs": []
 }

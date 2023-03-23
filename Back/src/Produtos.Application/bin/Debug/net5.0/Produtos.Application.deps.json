@@ -8,7 +8,6 @@
     ".NETCoreApp,Version=v5.0": {
       "Produtos.Application/1.0.0": {
         "dependencies": {
-          "Produtos.Domain": "1.0.0",
           "Produtos.Persistence": "1.0.0"
         },
         "runtime": {
@@ -190,6 +189,10 @@
         }
       },
       "Produtos.Domain/1.0.0": {
+        "dependencies": {
+          "Microsoft.EntityFrameworkCore": "5.0.3",
+          "Microsoft.EntityFrameworkCore.Tools": "5.0.3"
+        },
         "runtime": {
           "Produtos.Domain.dll": {}
         }

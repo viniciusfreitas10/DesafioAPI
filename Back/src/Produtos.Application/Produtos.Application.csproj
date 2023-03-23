@@ -9,8 +9,7 @@
     <WarningsAsErrors />
   </PropertyGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ProEventos.Domain\Produtos.Domain.csproj" />
-    <ProjectReference Include="..\ProEventos.Persistence\Produtos.Persistence.csproj" />
+	  <ProjectReference Include="..\Produtos.Persistence\Produtos.Persistence.csproj" />
   </ItemGroup>
 
 </Project>

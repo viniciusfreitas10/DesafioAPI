@@ -9,7 +9,7 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="5.0.3" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Produtos.Domain\Produtos.Domain.csproj" />
+	<ProjectReference Include="..\Produtos.Domain\Produtos.Domain.csproj" />
   </ItemGroup>
 
 </Project>

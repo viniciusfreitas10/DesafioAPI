@@ -7,4 +7,4 @@ build_property.PublishSingleFile =
 build_property.IncludeAllContentForSelfExtract = 
 build_property._SupportedPlatformList = Android,iOS,Linux,macOS,Windows
 build_property.RootNamespace = Produtos.API
-build_property.ProjectDir = C:\Users\vfreitas\Desktop\Pessoal\Dev\dev\Desenvolvimento Web\Desafio API\API\DesafioAPI\Back\src\ProEvento.API\
+build_property.ProjectDir = C:\Users\vfreitas\Desktop\Pessoal\Dev\dev\Desenvolvimento Web\Desafio API\API\DesafioAPI\Back\src\Produtos.API\

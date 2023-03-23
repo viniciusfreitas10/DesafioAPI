@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Produtos.Persistence.Contratos;
 
-namespace ProEventos.Application
+namespace Produtos.Application
 {
     public class ProductService : IProductService
     {

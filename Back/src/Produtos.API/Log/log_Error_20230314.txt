@@ -1,2 +1,0 @@
-﻿14/03/2023 22:53:52 Error : AddEvent > AddEventos - Erro ao tentar adicionar novo evento SQLite Error 5: 'database is locked'.
--------------------------------

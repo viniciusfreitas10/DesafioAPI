@@ -17,10 +17,9 @@ using Produtos.Persistence.Context;
 using Produtos.Application.Contratos;
 using Produtos.Application;
 using Produtos.Persistence.Contratos;
-using ProEventos.Application;
-using ProEventos.Persistence;
 
-namespace ProEvento.API
+
+namespace Produtos.API
 {
     public class Startup
     {

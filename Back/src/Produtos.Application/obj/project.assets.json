@@ -236,6 +236,10 @@
       "Produtos.Domain/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v5.0",
+        "dependencies": {
+          "Microsoft.EntityFrameworkCore": "5.0.3",
+          "Microsoft.EntityFrameworkCore.Tools": "5.0.3"
+        },
         "compile": {
           "bin/placeholder/Produtos.Domain.dll": {}
         },
@@ -247,9 +251,9 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v5.0",
         "dependencies": {
-          "C:\\Users\\vfreitas\\Desktop\\Pessoal\\Dev\\dev\\Desenvolvimento Web\\Desafio API\\API\\DesafioAPI\\Back\\src\\Produtos.Domain\\Produtos.Domain.csproj": "1.0.0",
           "Microsoft.EntityFrameworkCore": "5.0.3",
-          "Microsoft.EntityFrameworkCore.Tools": "5.0.3"
+          "Microsoft.EntityFrameworkCore.Tools": "5.0.3",
+          "Produtos.Domain": "1.0.0"
         },
         "compile": {
           "bin/placeholder/Produtos.Persistence.dll": {}
@@ -777,18 +781,17 @@
     },
     "Produtos.Domain/1.0.0": {
       "type": "project",
-      "path": "../ProEventos.Domain/Produtos.Domain.csproj",
-      "msbuildProject": "../ProEventos.Domain/Produtos.Domain.csproj"
+      "path": "../Produtos.Domain/Produtos.Domain.csproj",
+      "msbuildProject": "../Produtos.Domain/Produtos.Domain.csproj"
     },
     "Produtos.Persistence/1.0.0": {
       "type": "project",
-      "path": "../ProEventos.Persistence/Produtos.Persistence.csproj",
-      "msbuildProject": "../ProEventos.Persistence/Produtos.Persistence.csproj"
+      "path": "../Produtos.Persistence/Produtos.Persistence.csproj",
+      "msbuildProject": "../Produtos.Persistence/Produtos.Persistence.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net5.0": [
-      "Produtos.Domain >= 1.0.0",
       "Produtos.Persistence >= 1.0.0"
     ]
   },
@@ -798,11 +801,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\vfreitas\\Desktop\\Pessoal\\Dev\\dev\\Desenvolvimento Web\\Desafio API\\API\\DesafioAPI\\Back\\src\\ProEventos.Application\\Produtos.Application.csproj",
+      "projectUniqueName": "C:\\Users\\vfreitas\\Desktop\\Pessoal\\Dev\\dev\\Desenvolvimento Web\\Desafio API\\API\\DesafioAPI\\Back\\src\\Produtos.Application\\Produtos.Application.csproj",
       "projectName": "Produtos.Application",
-      "projectPath": "C:\\Users\\vfreitas\\Desktop\\Pessoal\\Dev\\dev\\Desenvolvimento Web\\Desafio API\\API\\DesafioAPI\\Back\\src\\ProEventos.Application\\Produtos.Application.csproj",
+      "projectPath": "C:\\Users\\vfreitas\\Desktop\\Pessoal\\Dev\\dev\\Desenvolvimento Web\\Desafio API\\API\\DesafioAPI\\Back\\src\\Produtos.Application\\Produtos.Application.csproj",
       "packagesPath": "C:\\Users\\vfreitas\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\vfreitas\\Desktop\\Pessoal\\Dev\\dev\\Desenvolvimento Web\\Desafio API\\API\\DesafioAPI\\Back\\src\\ProEventos.Application\\obj\\",
+      "outputPath": "C:\\Users\\vfreitas\\Desktop\\Pessoal\\Dev\\dev\\Desenvolvimento Web\\Desafio API\\API\\DesafioAPI\\Back\\src\\Produtos.Application\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\vfreitas\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -820,11 +823,8 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "projectReferences": {
-            "C:\\Users\\vfreitas\\Desktop\\Pessoal\\Dev\\dev\\Desenvolvimento Web\\Desafio API\\API\\DesafioAPI\\Back\\src\\ProEventos.Domain\\Produtos.Domain.csproj": {
-              "projectPath": "C:\\Users\\vfreitas\\Desktop\\Pessoal\\Dev\\dev\\Desenvolvimento Web\\Desafio API\\API\\DesafioAPI\\Back\\src\\ProEventos.Domain\\Produtos.Domain.csproj"
-            },
-            "C:\\Users\\vfreitas\\Desktop\\Pessoal\\Dev\\dev\\Desenvolvimento Web\\Desafio API\\API\\DesafioAPI\\Back\\src\\ProEventos.Persistence\\Produtos.Persistence.csproj": {
-              "projectPath": "C:\\Users\\vfreitas\\Desktop\\Pessoal\\Dev\\dev\\Desenvolvimento Web\\Desafio API\\API\\DesafioAPI\\Back\\src\\ProEventos.Persistence\\Produtos.Persistence.csproj"
+            "C:\\Users\\vfreitas\\Desktop\\Pessoal\\Dev\\dev\\Desenvolvimento Web\\Desafio API\\API\\DesafioAPI\\Back\\src\\Produtos.Persistence\\Produtos.Persistence.csproj": {
+              "projectPath": "C:\\Users\\vfreitas\\Desktop\\Pessoal\\Dev\\dev\\Desenvolvimento Web\\Desafio API\\API\\DesafioAPI\\Back\\src\\Produtos.Persistence\\Produtos.Persistence.csproj"
             }
           }
         }
@@ -851,16 +851,5 @@
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.406\\RuntimeIdentifierGraph.json"
       }
     }
-  },
-  "logs": [
-    {
-      "code": "NU1104",
-      "level": "Error",
-      "message": "Unable to find project 'C:\\Users\\vfreitas\\Desktop\\Pessoal\\Dev\\dev\\Desenvolvimento Web\\Desafio API\\API\\DesafioAPI\\Back\\src\\Produtos.Domain\\Produtos.Domain.csproj'. Check that the project reference is valid and that the project file exists.",
-      "libraryId": "C:\\Users\\vfreitas\\Desktop\\Pessoal\\Dev\\dev\\Desenvolvimento Web\\Desafio API\\API\\DesafioAPI\\Back\\src\\Produtos.Domain\\Produtos.Domain.csproj",
-      "targetGraphs": [
-        "net5.0"
-      ]
-    }
-  ]
+  }
 }
