@@ -1,0 +1,7 @@
+C:\Users\vfreitas\Desktop\Pessoal\Dev\dev\Desenvolvimento Web\Desafio API\API\DesafioAPI\Back\src\ProEvento.API\obj\Debug\net5.0\Produtos.API.csproj.AssemblyReference.cache
+C:\Users\vfreitas\Desktop\Pessoal\Dev\dev\Desenvolvimento Web\Desafio API\API\DesafioAPI\Back\src\ProEvento.API\obj\Debug\net5.0\Produtos.API.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\vfreitas\Desktop\Pessoal\Dev\dev\Desenvolvimento Web\Desafio API\API\DesafioAPI\Back\src\ProEvento.API\obj\Debug\net5.0\Produtos.API.AssemblyInfoInputs.cache
+C:\Users\vfreitas\Desktop\Pessoal\Dev\dev\Desenvolvimento Web\Desafio API\API\DesafioAPI\Back\src\ProEvento.API\obj\Debug\net5.0\Produtos.API.AssemblyInfo.cs
+C:\Users\vfreitas\Desktop\Pessoal\Dev\dev\Desenvolvimento Web\Desafio API\API\DesafioAPI\Back\src\ProEvento.API\obj\Debug\net5.0\Produtos.API.csproj.CoreCompileInputs.cache
+C:\Users\vfreitas\Desktop\Pessoal\Dev\dev\Desenvolvimento Web\Desafio API\API\DesafioAPI\Back\src\ProEvento.API\obj\Debug\net5.0\Produtos.API.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\vfreitas\Desktop\Pessoal\Dev\dev\Desenvolvimento Web\Desafio API\API\DesafioAPI\Back\src\ProEvento.API\obj\Debug\net5.0\Produtos.API.MvcApplicationPartsAssemblyInfo.cache
