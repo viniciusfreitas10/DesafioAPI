@@ -14,7 +14,7 @@ namespace Produtos.Domain
         public DateTime DataFabricacao { get; set; }
         public DateTime DataValidade { get; set; }
         public int CodigoFornecedor { get; set; }
-        public string DescriptionFornecedor{ get; set; }
+        public string DescricaoFornecedor{ get; set; }
         public string Cnpj { get; set; }
     }
 }
