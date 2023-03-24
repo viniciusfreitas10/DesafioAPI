@@ -13,7 +13,6 @@ namespace Produtos.Persistence.Context
         public ProductContext(DbContextOptions<ProductContext> options) 
             :  base(options) {}
         public DbSet<Produto> Produtos { get; set; }
-       
-        protected override void OnModelCreating(ModelBuilder modelBuilder) {}
+        
     }
 }

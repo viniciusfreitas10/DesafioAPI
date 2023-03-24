@@ -17,7 +17,7 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "ProEvento.API": {
+    "Produtos.API": {
       "commandName": "Project",
       "dotnetRunMessages": "true",
       "launchBrowser": true,

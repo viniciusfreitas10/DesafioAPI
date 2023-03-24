@@ -42,15 +42,14 @@ namespace Produtos.API
                     Newtonsoft.Json.ReferenceLoopHandling.Ignore
                 );
 
-            services.AddScoped<IProductService, ProductService>();
+            /*services.AddScoped<IProductService, ProductService>();
             services.AddScoped<IProductPersist, ProductPersist>();
             services.AddScoped<IGeralPersist, GeralPersist>();
-
+            */
             services.AddCors();
             services.AddSwaggerGen(c =>
             {
-                //ToDo: Remover "ProEvento.API"
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "ProEvento.API", Version = "v1" });
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Produtos.API", Version = "v1" });
                 c.ResolveConflictingActions(x => x.First());
             });
         }
@@ -62,7 +61,7 @@ namespace Produtos.API
             {
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "ProEvento.API v1"));
+                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Produtos.API v1"));
             }
 
             app.UseHttpsRedirection();
