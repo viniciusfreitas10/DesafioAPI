@@ -42,10 +42,14 @@ namespace Produtos.API
                     Newtonsoft.Json.ReferenceLoopHandling.Ignore
                 );
 
-            /*services.AddScoped<IProductService, ProductService>();
+            //ToDo: Se der erro, comentar essa parte
+            /*
+           
+            services.AddScoped<IProductService, ProductService>();
+            */
+            services.AddScoped<IProductService, ProductService>();
             services.AddScoped<IProductPersist, ProductPersist>();
             services.AddScoped<IGeralPersist, GeralPersist>();
-            */
             services.AddCors();
             services.AddSwaggerGen(c =>
             {

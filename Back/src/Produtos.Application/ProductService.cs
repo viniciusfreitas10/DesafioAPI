@@ -12,9 +12,9 @@ namespace Produtos.Application
     public class ProductService : IProductService
     {
         private readonly IGeralPersist _geralPersist;
-        private readonly IProductService _productPersist;
+        private readonly IProductPersist _productPersist;
 
-        public ProductService(IGeralPersist geralPersist, IProductService productPersist)
+        public ProductService(IGeralPersist geralPersist, IProductPersist productPersist)
         {
             _geralPersist = geralPersist;
             _productPersist = productPersist;
