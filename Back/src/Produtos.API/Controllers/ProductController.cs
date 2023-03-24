@@ -9,6 +9,7 @@ using Produtos.Domain;
 using Produtos.Persistence.Context;
 using Produtos.Application.Contratos;
 using Microsoft.AspNetCore.Http;
+using static System.String;
 
 namespace Produtos.API.Controllers
 {
@@ -50,8 +51,21 @@ namespace Produtos.API.Controllers
             {
                 logger.Log("AddProduct", $"adicionando produto: ID: {model.Id}", "Info");
 
+                if (IsNullOrEmpty(model.Description))
+                    return BadRequest("O campo descrição do produto deve ser preenchido");
+
+                if (Convert.ToString(model.EstReg).ToUpper() != "A" || Convert.ToString(model.EstReg).ToUpper() != "H")
+                    return BadRequest("O campo situação deverá ser preenchido com 'A' para Ativo ou 'H' para Histórico (Inativo)");
+                
+                if (DateValidation(model.DataFabricacao, model.DataValidade))
+                    return BadRequest($"Erro ao adicionar o produto - A data de fabricação não pode ser maior ou igual a data de validade");
+
+                //Sempre salvar com letra maiúscula
+                model.EstReg = Convert.ToChar(Convert.ToString(model.EstReg).ToUpper());
+
                 var product = await _productService.AddProduct(model);
                 if (product == null) return BadRequest($"Erro ao atualizar o produto: {product.Id}");
+
                 return Ok(product);
             }
             catch (Exception e)
@@ -68,13 +82,23 @@ namespace Produtos.API.Controllers
             {
                 logger.Log("AttProduct", $"atualizando produto: ID: {model.Id}", "Info");
 
+                if (IsNullOrEmpty(model.Description))
+                    return BadRequest("O campo descrição do produto deve ser preenchido");
+
+                if (Convert.ToString(model.EstReg).ToUpper() != "A" || Convert.ToString(model.EstReg).ToUpper() != "H")
+                    return BadRequest("O campo situação deverá ser preenchido com 'A' para Ativo ou 'H' para Histórico (Inativo)");
+
+                if (DateValidation(model.DataFabricacao, model.DataValidade))
+                    return BadRequest($"Erro ao atualizar o produto: {model.Id} - A data de fabricação não pode ser maior ou igual a data de validade");
+               
+                //Sempre salvar com letra maiúscula
+                model.EstReg = Convert.ToChar(Convert.ToString(model.EstReg).ToUpper());
                 var product = await _productService.UpdateProduct(id,model);
+
                 if (product == null)
-                {
                     return BadRequest($"Erro ao atualizar o produto: {product.Id}");
-                    logger.Log("AttProduct", $"Erro ao atualizar o produto: {product.Id}", "Error");
-                }
-                    return Ok(product);
+
+                return Ok(product);
             }
             catch (Exception e)
             {
@@ -119,5 +143,11 @@ namespace Produtos.API.Controllers
                     $"Erro ao tentar recuperar produto com Id: {id} - Erro: {e.Message}");
             }
         }
+        
+        private bool DateValidation(DateTime dateManufacture, DateTime datevalidity)
+        {
+            return dateManufacture >= datevalidity ? true : false;
+        }
+        
     }
 }
