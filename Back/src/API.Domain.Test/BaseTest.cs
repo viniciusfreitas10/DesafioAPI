@@ -48,13 +48,27 @@ namespace API.Domain.Test
         }
 
         [Fact (DisplayName ="Devera retornar o statusCode OK (200)")]
-        public async Task TestGetProducts()
+        public async Task TestGetAllProducts()
         {
             int StatesOkResponse = 200;
 
             var result = productController.GetProducts();
 
             var OkObjectResult = Assert.IsType<OkObjectResult>(result.Result);
+
+            Assert.Equal(StatesOkResponse, OkObjectResult.StatusCode);
+
+        }
+
+        [Fact(DisplayName = "Devera retorna o status 200 (OK)")]
+        public async Task TestGetProductById()
+        {
+            int StatesOkResponse = 200;
+            int idProduct = 1;
+
+            var result = productController.GetProductById(idProduct);
+
+            var OkObjectResult = Assert.IsType<OkObjectResult>(result);
 
             Assert.Equal(StatesOkResponse, OkObjectResult.StatusCode);
 
