@@ -1,0 +1,50 @@
+<script src="https://kit.fontawesome.com/f7a8512136.js" crossorigin="anonymous"></script>
+<hr>
+<div method="" class="form-inline">
+    <div class="form-group mb-2">
+        <label class="mr-2">Filtro: </label>
+        <input type="text" class="form-control mr2" placeholder="buscar" [(ngModel)]="filtroListaPaginaInicial">
+    </div>
+</div>
+<table class="table table-striped">
+    <thead class="thead-dark">
+        <tr>
+            <th>
+                <button type="button" class="btn btn-dark text-light" (click)="controleDeExibicaoDeImagem()" aria-controls="imagens">
+                <i class="{{ExibirImagem ? 'fa fa-eye-slash' : 'fa fa-eye'}}"></i>
+                {{ExibirImagem ? "Ocultar" : "Exibir"}}
+              </button>
+            </th>
+            <th>#</th>
+            <th>Descrição Produto</th>
+            <th>Data Fabricação</th>
+            <th>Data Validade</th>
+            <th>Codigo Do Fornecedor</th>
+            <th>Descrição Do Fornecedor</th>
+            <th>CNPJ</th>
+            <th>Situação</th>
+        </tr>
+    </thead>
+    <tbody *ngIf="produtos && produtos.length > 0">
+        <tr *ngFor="let produto of produtosFiltrado">
+            <td>
+                <img [collapse]="!ExibirImagem" [isAnimated]="true" src="/assets/vidro.jpg" [style.width.px]="ImageWidth" [style.margin.px]="ImageMargin"><img>
+            </td>
+            <td>{{produto.id}}</td>
+            <td>{{produto.description}}</td>
+            <td>{{produto.dataFabricacao | DateTimeFormatPip}}</td>
+            <td>{{produto.dataValidade | DateTimeFormatPip}}</td>
+            <td>{{produto.codigoFornecedor}}</td>
+            <td>{{produto.descricaoFornecedor}}</td>
+            <td>{{produto.cnpj}}</td>
+            <td>{{produto.estReg}}</td>
+        </tr>
+    </tbody>
+    <tfoot *ngIf="!produtos.length">
+        <tr>
+            <td colspan="8" class="text-center">
+                <h4>Nenhum evento encontrado!</h4>
+            </td>
+        </tr>
+    </tfoot>
+</table>

@@ -35,6 +35,8 @@ namespace Produtos.API.Controllers
                 var products = await _productService.GetAllProductAsync();
                 if (products == null) return NotFound("Nenhum produto encontrado");
 
+
+
                 return Ok(products);
             }
             catch (Exception e)
