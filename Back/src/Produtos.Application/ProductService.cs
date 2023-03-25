@@ -11,8 +11,8 @@ namespace Produtos.Application
 {
     public class ProductService : IProductService
     {
-        private readonly IGeralPersist _geralPersist;
-        private readonly IProductPersist _productPersist;
+        public readonly IGeralPersist _geralPersist;
+        public readonly IProductPersist _productPersist;
 
         public ProductService(IGeralPersist geralPersist, IProductPersist productPersist)
         {

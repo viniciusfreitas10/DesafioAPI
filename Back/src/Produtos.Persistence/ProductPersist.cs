@@ -13,7 +13,7 @@ namespace Produtos.Persistence
 {
     public class ProductPersist : IProductPersist
     {
-        private readonly ProductContext _context;
+        public readonly ProductContext _context;
 
         public ProductPersist(ProductContext context)
         {

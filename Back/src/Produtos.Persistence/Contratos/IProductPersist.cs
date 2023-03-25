@@ -9,7 +9,7 @@ namespace Produtos.Persistence.Contratos
 {
     public interface IProductPersist
     {
-        Task<Produto[]> GetAllProductAsync();
-        Task<Produto> GetProductById(int productId);
+        public Task<Produto[]> GetAllProductAsync();
+        public Task<Produto> GetProductById(int productId);
     }
 }

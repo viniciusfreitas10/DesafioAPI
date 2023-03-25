@@ -13,7 +13,7 @@ namespace Produtos.Persistence
 {
     public class GeralPersist : IGeralPersist
     {
-        private readonly ProductContext _context;
+        public readonly ProductContext _context;
 
         public GeralPersist(ProductContext context)
         {

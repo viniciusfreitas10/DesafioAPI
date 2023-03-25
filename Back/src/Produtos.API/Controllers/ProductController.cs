@@ -17,7 +17,7 @@ namespace Produtos.API.Controllers
     [Route("api/[controller]")]
     public class ProductController : ControllerBase
     {
-        private readonly IProductService _productService;
+        public readonly IProductService _productService;
         Logger logger = new Logger();
 
         public ProductController(IProductService productService) 

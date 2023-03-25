@@ -9,10 +9,10 @@ namespace Produtos.Application.Contratos
 {
     public interface IProductService
     {
-        Task<Produto> AddProduct(Produto model);
-        Task<Produto> UpdateProduct(int productId, Produto model);
-        Task<bool> DeleteProduct(int productId);
-        Task<Produto[]> GetAllProductAsync();
-        Task<Produto> GetProductById(int productId);
+        public Task<Produto> AddProduct(Produto model);
+        public Task<Produto> UpdateProduct(int productId, Produto model);
+        public Task<bool> DeleteProduct(int productId);
+        public Task<Produto[]> GetAllProductAsync();
+        public Task<Produto> GetProductById(int productId);
     }
 }
