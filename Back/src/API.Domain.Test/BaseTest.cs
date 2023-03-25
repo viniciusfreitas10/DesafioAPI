@@ -47,7 +47,7 @@ namespace API.Domain.Test
             productController = new ProductController(_productServiceMock.Object);
         }
 
-        [Fact (DisplayName ="Deverá retornar o statusCode OK (200)")]
+        [Fact (DisplayName ="Devera retornar o statusCode OK (200)")]
         public async Task TestGetProducts()
         {
             int StatesOkResponse = 200;

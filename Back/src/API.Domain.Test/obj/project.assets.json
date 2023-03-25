@@ -8367,9 +8367,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\vfreitas\\Desktop\\Pessoal\\Dev\\dev\\Desenvolvimento Web\\Desafio API\\API\\DesafioAPI\\Back\\src\\API.Domain.Test\\API.Test.csproj",
-      "projectName": "API.Test",
-      "projectPath": "C:\\Users\\vfreitas\\Desktop\\Pessoal\\Dev\\dev\\Desenvolvimento Web\\Desafio API\\API\\DesafioAPI\\Back\\src\\API.Domain.Test\\API.Test.csproj",
+      "projectUniqueName": "C:\\Users\\vfreitas\\Desktop\\Pessoal\\Dev\\dev\\Desenvolvimento Web\\Desafio API\\API\\DesafioAPI\\Back\\src\\API.Domain.Test\\API.Domain.Test.csproj",
+      "projectName": "API.Domain.Test",
+      "projectPath": "C:\\Users\\vfreitas\\Desktop\\Pessoal\\Dev\\dev\\Desenvolvimento Web\\Desafio API\\API\\DesafioAPI\\Back\\src\\API.Domain.Test\\API.Domain.Test.csproj",
       "packagesPath": "C:\\Users\\vfreitas\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\vfreitas\\Desktop\\Pessoal\\Dev\\dev\\Desenvolvimento Web\\Desafio API\\API\\DesafioAPI\\Back\\src\\API.Domain.Test\\obj\\",
       "projectStyle": "PackageReference",
