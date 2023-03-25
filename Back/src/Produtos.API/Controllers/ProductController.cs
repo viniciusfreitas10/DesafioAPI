@@ -20,7 +20,7 @@ namespace Produtos.API.Controllers
         public readonly IProductService _productService;
         Logger logger = new Logger();
 
-        public ProductController(IProductService productService) 
+        public ProductController(IProductService productService)
         {
             _productService = productService;
         }
@@ -41,7 +41,7 @@ namespace Produtos.API.Controllers
             {
                 logger.Log("GetProducts", e.Message, "Error");
                 return this.StatusCode(StatusCodes.Status500InternalServerError,
-                    $"Erro ao tentar recuperar os produtos . Erro: {e.Message}" );
+                    $"Erro ao tentar recuperar os produtos . Erro: {e.Message}");
             }
         }
         [HttpPost]
@@ -54,9 +54,6 @@ namespace Produtos.API.Controllers
                 if (IsNullOrEmpty(model.Description))
                     return BadRequest("O campo descrição do produto deve ser preenchido");
 
-                if (Convert.ToString(model.EstReg).ToUpper() != "A" || Convert.ToString(model.EstReg).ToUpper() != "H")
-                    return BadRequest("O campo situação deverá ser preenchido com 'A' para Ativo ou 'H' para Histórico (Inativo)");
-                
                 if (DateValidation(model.DataFabricacao, model.DataValidade))
                     return BadRequest($"Erro ao adicionar o produto - A data de fabricação não pode ser maior ou igual a data de validade");
 
@@ -85,15 +82,12 @@ namespace Produtos.API.Controllers
                 if (IsNullOrEmpty(model.Description))
                     return BadRequest("O campo descrição do produto deve ser preenchido");
 
-                if (Convert.ToString(model.EstReg).ToUpper() != "A" || Convert.ToString(model.EstReg).ToUpper() != "H")
-                    return BadRequest("O campo situação deverá ser preenchido com 'A' para Ativo ou 'H' para Histórico (Inativo)");
-
                 if (DateValidation(model.DataFabricacao, model.DataValidade))
                     return BadRequest($"Erro ao atualizar o produto: {model.Id} - A data de fabricação não pode ser maior ou igual a data de validade");
-               
+
                 //Sempre salvar com letra maiúscula
                 model.EstReg = Convert.ToChar(Convert.ToString(model.EstReg).ToUpper());
-                var product = await _productService.UpdateProduct(id,model);
+                var product = await _productService.UpdateProduct(id, model);
 
                 if (product == null)
                     return BadRequest($"Erro ao atualizar o produto: {product.Id}");
@@ -114,13 +108,35 @@ namespace Produtos.API.Controllers
             {
                 logger.Log("DeleteProduct", $"Deletando o produto - ID: {model.Id} ", "Info");
 
-                return await _productService.DeleteProduct(id) ?  Ok("Deletado") :  BadRequest($"Erro ao deletar o produto: {id}");
+                return await _productService.DeleteProduct(id) ? Ok("Deletado") : BadRequest($"Erro ao deletar o produto: {id}");
             }
             catch (Exception e)
             {
                 logger.Log("DeleteProduct", e.Message, "Error");
                 return this.StatusCode(StatusCodes.Status500InternalServerError,
                     $"Erro ao tentar deletar o produto. Erro: {e.Message}");
+            }
+        }
+        [HttpPost("{id}/historic")]
+        public async Task<IActionResult> HistoricProductApi(int id)
+        {
+            try
+            {
+                logger.Log("HistoricProduct", $"Historizando o produto: {id}", "Info");
+
+                var product = await _productService.HistoricProduct(id);
+
+                if (product == null) return BadRequest($"Erro ao historizar o produto: {product.Id}");
+
+                return Ok(product);
+
+            }
+            catch (Exception e)
+            {
+                logger.Log("HistoricProduct", e.Message, "Error");
+
+                return this.StatusCode(StatusCodes.Status400BadRequest,
+                    $"Erro ao tentar historizar o produto. Erro: {e.Message}");
             }
         }
         [HttpGet("{id}")]

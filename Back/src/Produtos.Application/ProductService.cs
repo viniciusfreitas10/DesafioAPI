@@ -107,5 +107,28 @@ namespace Produtos.Application
                 throw new Exception($"GetProductById - Erro ao recuperar o produto de id: {productId} - " + e.Message);
             }
         }
+        public async Task<Produto> HistoricProduct(int productId)
+        {
+            try
+            {
+
+                var product = await _productPersist.GetProductById(productId);
+                if (product == null) return null;
+
+                product.EstReg = 'H';
+
+                _geralPersist.Update(product);
+
+                if (await _geralPersist.SaveChangesAsync())
+                {
+                    return await _productPersist.GetProductById(productId);
+                }
+                return null;
+            }
+            catch (Exception e)
+            {
+                throw new Exception($"UpdateProduct: Erro ao tentar historizar o produto de id: {productId} - " + e.Message);
+            }
+        }
     }
 }

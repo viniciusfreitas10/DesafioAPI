@@ -25,11 +25,18 @@ namespace Produtos.Persistence
         {
             try
             {
+                int numberPag = 1;
+                int pageSize = 10;
+
                 IQueryable<Produto> query = _context.Produtos;
 
                 query = query
                     .AsNoTracking().
                     OrderBy(e => e.Id);
+
+                //Pagination
+                query = query.Skip((numberPag - 1) * pageSize)
+                    .Take(pageSize);
 
                 return await query.ToArrayAsync();
             }

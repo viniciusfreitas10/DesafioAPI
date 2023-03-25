@@ -14,5 +14,6 @@ namespace Produtos.Application.Contratos
         public Task<bool> DeleteProduct(int productId);
         public Task<Produto[]> GetAllProductAsync();
         public Task<Produto> GetProductById(int productId);
+        public Task<Produto> HistoricProduct(int productId);
     }
 }
