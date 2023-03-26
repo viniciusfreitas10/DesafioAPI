@@ -31,10 +31,9 @@ export class ProdutosComponent implements OnInit {
   }
   public FiltrarProdutos(filtrarPor: string): Produto[]{
     filtrarPor = filtrarPor.toLocaleUpperCase();
-    console.log("Estou realizando filtro")
     return this.produtos.filter(
       (produto: any) => produto.description.toLocaleUpperCase().indexOf(filtrarPor) !== -1
-      || produto.DescricaoFornecedor.toLocaleUpperCase().indexOf(filtrarPor) !== - 1
+      || produto.descricaoFornecedor.toLocaleUpperCase().indexOf(filtrarPor) !== - 1
       || produto.dataFabricacao.toLocaleUpperCase().indexOf(filtrarPor) !== - 1
     )
   }

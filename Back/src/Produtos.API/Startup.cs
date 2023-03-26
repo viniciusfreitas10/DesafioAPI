@@ -42,11 +42,6 @@ namespace Produtos.API
                     Newtonsoft.Json.ReferenceLoopHandling.Ignore
                 );
 
-            //ToDo: Se der erro, comentar essa parte
-            /*
-           
-            services.AddScoped<IProductService, ProductService>();
-            */
             services.AddScoped<IProductService, ProductService>();
             services.AddScoped<IProductPersist, ProductPersist>();
             services.AddScoped<IGeralPersist, GeralPersist>();

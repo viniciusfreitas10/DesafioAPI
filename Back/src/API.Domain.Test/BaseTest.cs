@@ -67,14 +67,6 @@ namespace API.Domain.Test
          };
         }
     }
-    //[Collection("ProductController")]
-    //public class BaseTest : IClassFixture<WebApplicationFactory<Startup>>
-    public class BaseTest 
-        : IClassFixture<IProductService>
-    {
-       public BaseTest() { }
-            
-    }
 
     public class TestMap 
     {
@@ -82,6 +74,7 @@ namespace API.Domain.Test
         Mock<IProductService> _productServiceMock;
         TodoMockData _todoMockData;
         int StatesOkResponse;
+
         public TestMap()
         {
             StatesOkResponse = 200;
@@ -157,38 +150,5 @@ namespace API.Domain.Test
             Assert.Equal(StatesOkResponse, result.StatusCode);
 
         }
-    }
-
-    //EXCLUIR DEPOIS
-    public class TestGetProductById
-    {
-        public TestGetProductById()
-        {
-
-        }
-
-        [Theory(DisplayName = "Devera retornar o produto e retornar um statusCode 200(OK)")]
-        [InlineData(3)]
-        public async Task TestGetProductByI(int productId)
-        {
-            int StatesOkResponse = 200;
-
-            TodoMockData todoMockData = new TodoMockData();
-            var todoService = new Mock<IProductService>();
-            
-            foreach (Produto produto in todoMockData.GetTodos())
-            {
-                todoService.Setup(p => p.AddProduct(It.IsAny<Produto>())).Returns(Task.FromResult(produto));
-                todoService.Setup(p => p.GetProductById(It.IsAny<int>())).Returns(Task.FromResult(produto));
-            }
-
-            var sut = new ProductController(todoService.Object);
-
-            var result = (OkObjectResult)await sut.GetProductById(productId);
-
-            //Assert
-            Assert.Equal(StatesOkResponse, result.StatusCode);
-        }
-
     }
 }
