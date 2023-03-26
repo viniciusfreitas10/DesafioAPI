@@ -25,6 +25,48 @@ using System.Net;
 
 namespace API.Domain.Test
 {
+    public class TodoMockData
+    {
+        public DateTime dateTimeAtual = DateTime.Now;
+        public DateTime dateTimeValidade = DateTime.Now.AddDays(1);
+        public List<Produto> GetTodos()
+        {
+
+            return new List<Produto>{
+                new Produto{
+                    Id = 1,
+                    Description = "Produto Mock teste",
+                    EstReg = 'A',
+                    DataFabricacao = dateTimeAtual,
+                    DataValidade = dateTimeValidade,
+                    CodigoFornecedor = 1,
+                    DescricaoFornecedor = "Descrição mock teste",
+                    Cnpj = "1234567090/0001"
+                },
+                new Produto{
+                    Id = 2,
+                    Description = "Produto Mock teste 2",
+                    EstReg = 'A',
+                    DataFabricacao = dateTimeAtual,
+                    DataValidade = dateTimeValidade,
+                    CodigoFornecedor = 1,
+                    DescricaoFornecedor = "Descrição mock teste 2",
+                    Cnpj = "1234567090/0001"
+                },
+                new Produto{
+                    Id = 3,
+                    Description = "Produto Mock teste 3",
+                    EstReg = 'H',
+                    DataFabricacao = dateTimeAtual,
+                    DataValidade = dateTimeValidade,
+                    CodigoFornecedor = 2,
+                    DescricaoFornecedor = "Descrição mock teste 3",
+                    Cnpj = "1234567090/0001"
+                }
+
+         };
+        }
+    }
     //[Collection("ProductController")]
     //public class BaseTest : IClassFixture<WebApplicationFactory<Startup>>
     public class BaseTest 
@@ -43,7 +85,7 @@ namespace API.Domain.Test
         public TestMap()
         {
             _productServiceMock = new Mock<IProductService>();
-            //_productServiceMock.Setup(x => x.GetAllProductAsync());
+            _productServiceMock.Setup(x => x.GetProductById(2));
             productController = new ProductController(_productServiceMock.Object);
         }
 
@@ -59,19 +101,40 @@ namespace API.Domain.Test
             Assert.Equal(StatesOkResponse, OkObjectResult.StatusCode);
 
         }
-
-        [Fact(DisplayName = "Devera retorna o status 200 (OK)")]
-        public async Task TestGetProductById()
+        [Theory(DisplayName = "Devera retornar o produto e retornar um statusCode 200(OK)")]
+        [InlineData(3)]
+        public async Task TestGetProductById(int productId)
         {
             int StatesOkResponse = 200;
-            int idProduct = 1;
 
-            var result = productController.GetProductById(idProduct);
+            var result = await productController.GetProductById(productId);
 
-            var OkObjectResult = Assert.IsType<OkObjectResult>(result);
+            var okResult = result as StatusCodeResult;
 
-            Assert.Equal(StatesOkResponse, OkObjectResult.StatusCode);
+            ObjectResult objectResponse = Assert.IsType<ObjectResult>(okResult);
 
+            Assert.Equal(StatesOkResponse, objectResponse.StatusCode);
+
+        }
+        [Theory(DisplayName = "Devera historizar o produto e retornar um statusCode 200(OK)")]
+        [InlineData(2)]
+        public async Task TestHistoricProductApi(int idProduct)
+        {
+            //Desse jeito funciona, porém o erro agora é pq não consegue recupar o Produto com o Id
+            int StatesOkResponse = 200;
+
+            var result = await productController.HistoricProductApi(idProduct);
+
+            var okResult = result as StatusCodeResult;
+
+            ObjectResult objectResponse = Assert.IsType<ObjectResult>(okResult);
+
+            Assert.Equal(StatesOkResponse, objectResponse.StatusCode);
+
+
+            //var OkObjectResult = Assert.IsType<OkObjectResult>(result.Result);
+            //Assert.Equal(StatesOkResponse, OkObjectResult.StatusCode);
+            //var okResult = result as StatusCodeResult;
         }
 
         [Fact]
@@ -85,5 +148,58 @@ namespace API.Domain.Test
 
             Assert.Equal(esperado, r);
         }
+    }
+    public class TestGetProductById
+    {
+        public TestGetProductById()
+        {
+
+        }
+
+        [Theory(DisplayName = "Devera retornar o produto e retornar um statusCode 200(OK)")]
+        [InlineData(3)]
+        public async Task TestGetProductByI(int productId)
+        {
+            int StatesOkResponse = 200;
+            // var result = await productController.GetProductById(productId);
+
+            //var okResult = result as StatusCodeResult;
+
+            //ObjectResult objectResponse = Assert.IsType<ObjectResult>(okResult);
+
+            //Assert.Equal(StatesOkResponse, objectResponse.StatusCode);
+
+
+            //daq pra baixo - teste novo
+
+            /// Arrange
+            //todoService.Setup(_ => _.GetProductById(productId)).ReturnsAsync(todoMockData.GetTodos());
+            //todoService.Setup(_ => _.GetProductById(productId));
+
+            TodoMockData todoMockData = new TodoMockData();
+            var todoService = new Mock<IProductService>();
+            /*
+            foreach (Produto produto in todoMockData.GetTodos())
+            {
+            }*/
+
+            //todoService.Setup(p => p.AddProduct(It.IsAny<Produto>())).Returns(new Task<Produto>);
+
+            //todoService.Setup(p => p.GetProductById(It.IsAny<int>())).Returns(Task<Produto>.CompletedTask);
+
+            todoService.Setup(p => p.AddProduct(It.IsAny<Produto>())).Returns(Task<Produto>.FromResult(default(Produto)));
+
+            todoService.Setup(p => p.GetProductById(It.IsAny<int>())).Returns(Task<Produto>.FromResult(default(Produto)));
+
+            //todoService.Setup(p => p.GetProductById(It.IsAny<int>())).Returns(Task<Produto>.CompletedTask);
+
+            var sut = new ProductController(todoService.Object);
+
+            var result = (OkObjectResult)await sut.GetProductById(productId);
+
+            //Assert
+            Assert.Equal(StatesOkResponse, result.StatusCode);
+        }
+
     }
 }

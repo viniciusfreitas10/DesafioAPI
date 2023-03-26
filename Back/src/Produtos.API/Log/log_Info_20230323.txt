@@ -1,0 +1,6 @@
+﻿23/03/2023 22:51:32 Info : AddProduct > adicionando produto: ID: 0
+-------------------------------
+23/03/2023 22:52:10 Info : GetProducts > Recuperando produtos
+-------------------------------
+23/03/2023 22:54:36 Info : AttProduct > atualizando produto: ID: 0
+-------------------------------
