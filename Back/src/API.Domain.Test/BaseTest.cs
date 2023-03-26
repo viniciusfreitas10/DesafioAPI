@@ -77,78 +77,89 @@ namespace API.Domain.Test
     }
 
     public class TestMap 
-        //: IClassFixture<IProductService>
     {
         ProductController productController;
         Mock<IProductService> _productServiceMock;
-
+        TodoMockData _todoMockData;
+        int StatesOkResponse;
         public TestMap()
         {
+            StatesOkResponse = 200;
+            _todoMockData = new TodoMockData();
             _productServiceMock = new Mock<IProductService>();
-            _productServiceMock.Setup(x => x.GetProductById(2));
+
+            foreach (Produto produto in _todoMockData.GetTodos())
+            {
+                _productServiceMock.Setup(p => p.AddProduct(It.IsAny<Produto>())).Returns(Task.FromResult(produto));
+                _productServiceMock.Setup(p => p.GetProductById(It.IsAny<int>())).Returns(Task.FromResult(produto));
+                _productServiceMock.Setup(p => p.HistoricProduct(It.IsAny<int>())).Returns(Task.FromResult(produto));
+                _productServiceMock.Setup(p => p.UpdateProduct(It.IsAny<int>(),It.IsAny<Produto>())).Returns(Task.FromResult(produto));
+                _productServiceMock.Setup(p => p.DeleteProduct(It.IsAny<int>())).Returns(Task.FromResult(true));
+            }
             productController = new ProductController(_productServiceMock.Object);
         }
 
-        [Fact (DisplayName ="Devera retornar o statusCode OK (200)")]
+        [Fact (DisplayName ="Devera retornar todos os produtos e  o statusCode OK (200)")]
         public async Task TestGetAllProducts()
         {
-            int StatesOkResponse = 200;
+            var result = (OkObjectResult)await productController.GetProducts();
 
-            var result = productController.GetProducts();
-
-            var OkObjectResult = Assert.IsType<OkObjectResult>(result.Result);
-
-            Assert.Equal(StatesOkResponse, OkObjectResult.StatusCode);
+            Assert.Equal(StatesOkResponse, result.StatusCode);
 
         }
-        [Theory(DisplayName = "Devera retornar o produto e retornar um statusCode 200(OK)")]
+        [Theory(DisplayName = "GetProductById Deverá retornar o produto do Id referido e o  status code 200(OK)")]
         [InlineData(3)]
         public async Task TestGetProductById(int productId)
         {
-            int StatesOkResponse = 200;
+            var result = (OkObjectResult)await productController.GetProductById(productId);
 
-            var result = await productController.GetProductById(productId);
+            Assert.Equal(StatesOkResponse, result.StatusCode);
+        }
+        
+        [Theory(DisplayName = "Devera deletar o produto e retornar um statusCode 200(OK)")]
+        [InlineData(2)]
+        public async Task TestDeleteProductApiOk(int idProduct)
+        {
 
-            var okResult = result as StatusCodeResult;
+            var result = (OkObjectResult)await productController.DeleteProduct(idProduct, _todoMockData.GetTodos()[0]);
 
-            ObjectResult objectResponse = Assert.IsType<ObjectResult>(okResult);
-
-            Assert.Equal(StatesOkResponse, objectResponse.StatusCode);
+            Assert.Equal(StatesOkResponse, result.StatusCode);
 
         }
+
+        [Theory(DisplayName = "Devera atualizar o produto e retornar um statusCode 200(OK)")]
+        [InlineData(2)]
+        public async Task TestUpdateProductApiOk(int idProduct)
+        {
+
+            var result = (OkObjectResult)await productController.AttProduct(idProduct, _todoMockData.GetTodos()[0]);
+
+            Assert.Equal(StatesOkResponse, result.StatusCode);
+
+        }
+
+        [Fact(DisplayName = "Devera adicionar o produto e retornar um statusCode 200(OK)")]
+        public async Task TestAddProductApiOk()
+        {
+            var result = (OkObjectResult)await productController.AddProduct(_todoMockData.GetTodos()[0]);
+
+            Assert.Equal(StatesOkResponse, result.StatusCode);
+
+        }
+
         [Theory(DisplayName = "Devera historizar o produto e retornar um statusCode 200(OK)")]
         [InlineData(2)]
-        public async Task TestHistoricProductApi(int idProduct)
+        public async Task TestHistoricProductApiOk(int idProduct)
         {
-            //Desse jeito funciona, porém o erro agora é pq não consegue recupar o Produto com o Id
-            int StatesOkResponse = 200;
 
-            var result = await productController.HistoricProductApi(idProduct);
+            var result = (OkObjectResult)await productController.HistoricProductApi(idProduct);
 
-            var okResult = result as StatusCodeResult;
+            Assert.Equal(StatesOkResponse, result.StatusCode);
 
-            ObjectResult objectResponse = Assert.IsType<ObjectResult>(okResult);
-
-            Assert.Equal(StatesOkResponse, objectResponse.StatusCode);
-
-
-            //var OkObjectResult = Assert.IsType<OkObjectResult>(result.Result);
-            //Assert.Equal(StatesOkResponse, OkObjectResult.StatusCode);
-            //var okResult = result as StatusCodeResult;
-        }
-
-        [Fact]
-        public void TestPar()
-        {
-            int um = 1;
-            int dois = 2;
-            int esperado = 3;
-
-            int r = um + dois;
-
-            Assert.Equal(esperado, r);
         }
     }
+
+    //EXCLUIR DEPOIS
     public class TestGetProductById
     {
         public TestGetProductById()
@@ -161,37 +172,15 @@ namespace API.Domain.Test
         public async Task TestGetProductByI(int productId)
         {
             int StatesOkResponse = 200;
-            // var result = await productController.GetProductById(productId);
-
-            //var okResult = result as StatusCodeResult;
-
-            //ObjectResult objectResponse = Assert.IsType<ObjectResult>(okResult);
-
-            //Assert.Equal(StatesOkResponse, objectResponse.StatusCode);
-
-
-            //daq pra baixo - teste novo
-
-            /// Arrange
-            //todoService.Setup(_ => _.GetProductById(productId)).ReturnsAsync(todoMockData.GetTodos());
-            //todoService.Setup(_ => _.GetProductById(productId));
 
             TodoMockData todoMockData = new TodoMockData();
             var todoService = new Mock<IProductService>();
-            /*
+            
             foreach (Produto produto in todoMockData.GetTodos())
             {
-            }*/
-
-            //todoService.Setup(p => p.AddProduct(It.IsAny<Produto>())).Returns(new Task<Produto>);
-
-            //todoService.Setup(p => p.GetProductById(It.IsAny<int>())).Returns(Task<Produto>.CompletedTask);
-
-            todoService.Setup(p => p.AddProduct(It.IsAny<Produto>())).Returns(Task<Produto>.FromResult(default(Produto)));
-
-            todoService.Setup(p => p.GetProductById(It.IsAny<int>())).Returns(Task<Produto>.FromResult(default(Produto)));
-
-            //todoService.Setup(p => p.GetProductById(It.IsAny<int>())).Returns(Task<Produto>.CompletedTask);
+                todoService.Setup(p => p.AddProduct(It.IsAny<Produto>())).Returns(Task.FromResult(produto));
+                todoService.Setup(p => p.GetProductById(It.IsAny<int>())).Returns(Task.FromResult(produto));
+            }
 
             var sut = new ProductController(todoService.Object);
 
